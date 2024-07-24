@@ -60,7 +60,7 @@
             border-radius: 5px;
             box-sizing: border-box;
             clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
-            transition: clip-path 1s ease; 
+            transition: clip-path 1s ease; /* 调整动画速度 */
         }
         .links a:hover::before {
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -75,6 +75,22 @@
         }
         .links .email:hover {
             text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .links a {
+                margin: 5px;
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
+            .links .email {
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
