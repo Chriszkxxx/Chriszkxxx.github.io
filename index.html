@@ -18,8 +18,20 @@
             overflow-y: auto;
         }
         .container {
-            max-width: 800px;
+            display: flex;
+            max-width: 1000px;
             padding: 20px;
+        }
+        .sidebar {
+            width: 200px;
+            margin-right: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .content {
+            flex: 1;
             text-align: left; /* 左对齐 */
         }
         h1 {
@@ -59,8 +71,8 @@
             text-align: left; /* 左对齐 */
         }
         .links a {
-            display: inline-block;
-            margin: 0 10px 10px 0; /* 调整间距 */
+            display: block;
+            margin: 10px 0; /* 调整间距 */
             padding: 10px 20px;
             text-decoration: none;
             color: #333333;
@@ -103,8 +115,8 @@
             margin-top: 20px;
         }
         .intern-experience img {
-            width: 100px; 
-            height: 100px; 
+            width: 90px; 
+            height: 90px; 
             margin-right: 20px;
         }
         .intern-experience .details {
@@ -115,7 +127,28 @@
             font-size: 1.1em;
             color: #666666;
         }
+        .sidebar a {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            text-decoration: none;
+            color: #333333;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .sidebar a:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
         @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
             h1 {
                 font-size: 2.3em;
             }
@@ -140,9 +173,21 @@
 </head>
 <body>
     <div class="container">
-        <h1>Kaixin Zhu  朱 凯 鑫</h1>
-        
-        <h2>About</h2>
+        <div class="sidebar">
+            <a href="#about">About</a>
+            <a href="#news">News</a>
+            <a href="#intern-experience">Intern Experience</a>
+        </div>
+        <div class="content">
+            <h1>Kaixin Zhu / 朱凯鑫</h1>
+            <div class="links">
+                <a href="mailto:kaixinzhu56@gmail.com">kaixinzhu56@gmail.com</a>
+                <a href="https://www.linkedin.com/in/kaixin-zhu/" target="_blank">LinkedIn</a>
+                <a href="CV_Kaixin_Zhu.pdf" target="_blank">CV</a>
+                <a href="https://github.com/Chriszkxxx" target="_blank">GitHub</a>
+            </div>
+            
+            <h2 id="about">About</h2>
         <p>
             I am pursuing an undergraduate degree in <span class="highlight">Artificial Intelligence</span> at Hong Kong Baptist University, focusing on deep learning, computer vision, and third-generation neural networks (spiking neural networks). My current research goals are to advance and extend the applications of spiking neural networks and to explore transfer learning to inspire their greater potential. Additionally, I am further exploring the field of Artificial Intelligence Science, working towards Artificial Intelligent Generated Content. To deepen my research, I joined Dr Wentao Zhang's lab at the International Machine Learning Research Centre at Peking University as an intern.
             <br />As an undergraduate student, I am endeavoring to study and explore to continuously improve my knowledge and skills in the field of artificial intelligence. I participate in courses and projects, actively engage in academic discussions, and try collaborating with my peers to expand my research horizons and collaborative skills.
@@ -154,18 +199,19 @@
             </div>
         </p>
 
-        <h2>News</h2>
-        <ul>
-            <li>July 26th, 2024 -- IEEE student member</li>
-        </ul>
+            <h2 id="news">News</h2>
+            <ul>
+                <li>July 26th, 2024    IEEE student member</li>
+            </ul>
 
-        <h2>Intern Experience</h2>
-        <div class="intern-experience">
-            <img src="PKU.jpg" alt="University Logo">
-            <div class="details">
-                <h3>Research Intern at International Machine Learning Research Center, Peking University</h3>
-                <p><strong>Start Date:</strong> March 2024</p>
-                <p><strong>End Date:</strong> Present</p>
+            <h2 id="intern-experience">Intern Experience</h2>
+            <div class="intern-experience">
+                <img src="PKU.jpg" alt="University Logo">
+                <div class="details">
+                    <h3>Research Intern at International Machine Learning Research Center, Peking University</h3>
+                    <p><strong>Start Date:</strong> March 2024</p>
+                    <p><strong>End Date:</strong> Present</p>
+                </div>
             </div>
         </div>
     </div>
