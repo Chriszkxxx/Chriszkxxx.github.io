@@ -13,24 +13,37 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* 调整对齐方式 */
+            align-items: flex-start;
             height: 100vh;
-            overflow-y: auto; /* 允许垂直滚动 */
+            overflow-y: auto;
         }
         .container {
             max-width: 800px;
             padding: 20px;
-            text-align: center;
+            text-align: left; /* 左对齐 */
         }
         h1 {
-            font-size: 3em; 
+            font-size: 3em;
             color: #000000;
             margin-bottom: 10px;
+            text-align: left; /* 左对齐 */
         }
-        p {
+        h2 {
+            font-size: 2em;
+            color: #000000;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            text-align: left; /* 左对齐 */
+        }
+        p, ul {
             font-size: 1.2em;
             line-height: 1.6;
             color: #666666;
+            text-align: left; /* 左对齐 */
+        }
+        ul {
+            list-style-type: disc; /* 使用圆点作为列表标记 */
+            padding-left: 20px; /* 增加左内边距 */
         }
         .highlight {
             color: #000000;
@@ -38,10 +51,11 @@
         }
         .links {
             margin-top: 20px;
+            text-align: left; /* 左对齐 */
         }
         .links a {
             display: inline-block;
-            margin: 0 10px;
+            margin: 0 10px 10px 0; /* 调整间距 */
             padding: 10px 20px;
             text-decoration: none;
             color: #333333;
@@ -62,7 +76,7 @@
             border-radius: 5px;
             box-sizing: border-box;
             clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
-            transition: clip-path 1s ease; /* 调整动画速度 */
+            transition: clip-path 1s ease;
         }
         .links a:hover::before {
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -70,7 +84,7 @@
         }
         .links .email {
             display: block;
-            margin-bottom: 10px; 
+            margin-bottom: 10px;
             color: #666666;
             background-color: transparent;
             padding: 0;
@@ -78,12 +92,45 @@
         .links .email:hover {
             text-decoration: underline;
         }
+        .intern-experience {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .intern-experience img {
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+        }
+        .intern-experience .details {
+            flex: 1;
+        }
+        .intern-experience .details h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.4em;
+            color: #000000;
+        }
+        .intern-experience .details p {
+            margin: 0;
+            font-size: 1.2em;
+            color: #666666;
+        }
         @media (max-width: 600px) {
             h1 {
                 font-size: 2.3em;
             }
-            p {
+            h2 {
+                font-size: 1.8em;
+            }
+            p, ul {
                 font-size: 1em;
+            }
+            .intern-experience {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .intern-experience img {
+                margin-bottom: 10px;
             }
         }
     </style>
@@ -97,12 +144,31 @@
             <a href="CV_Kaixin_Zhu.pdf" target="_blank">CV</a>
             <a href="https://github.com/Chriszkxxx" target="_blank">GitHub</a>
         </div>
+        
+        <h2>About</h2>
         <p>
             Hello, I'm Kaixin Zhu.
             <br />I am pursuing an undergraduate degree in <span class="highlight">Artificial Intelligence</span> at Hong Kong Baptist University, focusing on deep learning, computer vision, and third-generation neural networks (spiking neural networks). My current research goals are to advance and extend the applications of spiking neural networks and to explore transfer learning to inspire their greater potential. Additionally, I am further exploring the field of Artificial Intelligence Science, working towards Artificial Intelligent Generated Content.
             <br />As an undergraduate student, I am endeavoring to study and explore to continuously improve my knowledge and skills in the field of artificial intelligence. I participate in courses and projects, actively engage in academic discussions, and try collaborating with my peers to expand my research horizons and collaborative skills.
             <br />I am passionate about the development of AI science and want to contribute to the development and application of AI technology through continuous learning and practice. I have ambitions to become an influential AI researcher and hope to contribute to solving complex problems in the real world. I believe that through diligence and hard work, I can continue to grow in this rapidly evolving field and contribute positively to future research and innovation.
         </p>
+
+        <h2>News</h2>
+        <ul>
+            <!-- 这里可以添加新闻内容 -->
+            <li>IEEE student member</li>
+        </ul>
+
+        <h2>Intern Experience</h2>
+        <div class="intern-experience">
+            <img src="PKU.jpg" alt="University Logo">
+            <div class="details">
+                <h3>Internship</h3>
+                <p><strong></strong> Research Intern at International Machine Learning Research Center, Peking University</p>
+                <p><strong>Start Date:</strong> March 2024</p>
+                <p><strong>End Date:</strong> Present</p>
+            </div>
+        </div>
     </div>
 </body>
 </html>
