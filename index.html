@@ -29,6 +29,8 @@
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 20px;
         }
         .content {
             flex: 1;
@@ -141,6 +143,17 @@
             background-color: #000000;
             color: #ffffff;
         }
+        .pre-publication {
+            margin-top: 30px;
+        }
+        .pre-publication h3 {
+            font-size: 1.5em;
+            color: #000000;
+            margin-bottom: 10px;
+        }
+        .pre-publication p {
+            margin: 5px 0;
+        }
         @media (max-width: 600px) {
             .container {
                 flex-direction: column;
@@ -149,6 +162,7 @@
                 width: 100%;
                 margin-right: 0;
                 margin-bottom: 20px;
+                position: static;
             }
             h1 {
                 font-size: 2.3em;
@@ -178,6 +192,7 @@
             <a href="#about">About</a>
             <a href="#news">News</a>
             <a href="#intern-experience">Intern Experience</a>
+            <a href="#pre-publication">Pre-publication</a>
         </div>
         <div class="content">
             <h1>Kaixin Zhu / 朱凯鑫</h1>
@@ -189,10 +204,10 @@
             </div>
             
             <h2 id="about">About</h2>
-        <p>
-            I am pursuing an undergraduate degree in <span class="highlight">Artificial Intelligence</span> at Hong Kong Baptist University, focusing on deep learning, computer vision, and third-generation neural networks (spiking neural networks). My current research goals are to advance and extend the applications of spiking neural networks and to explore transfer learning to inspire their greater potential. Additionally, I am further exploring the field of Artificial Intelligence Science, working towards Artificial Intelligent Generated Content. To deepen my research, I joined Dr Wentao Zhang's lab at the International Machine Learning Research Centre at Peking University as an intern.
-            <br />As an undergraduate student, I am endeavoring to study and explore to continuously improve my knowledge and skills in the field of artificial intelligence. I participate in courses and projects, actively engage in academic discussions, and try collaborating with my peers to expand my research horizons and collaborative skills.
-        </p>
+            <p>
+                I am pursuing an undergraduate degree in <span class="highlight">Artificial Intelligence</span> at Hong Kong Baptist University, focusing on deep learning, computer vision, and third-generation neural networks (spiking neural networks). My current research goals are to advance and extend the applications of spiking neural networks and to explore transfer learning to inspire their greater potential. Additionally, I am further exploring the field of Artificial Intelligence Science, working towards Artificial Intelligent Generated Content. To deepen my research, I joined Dr Wentao Zhang's lab at the International Machine Learning Research Centre at Peking University as an intern.
+                <br />As an undergraduate student, I am endeavoring to study and explore to continuously improve my knowledge and skills in the field of artificial intelligence. I participate in courses and projects, actively engage in academic discussions, and try collaborating with my peers to expand my research horizons and collaborative skills.
+            </p>
 
             <h2 id="news">News</h2>
             <ul>
@@ -207,6 +222,13 @@
                     <p><strong>Start Date:</strong> March 2024</p>
                     <p><strong>End Date:</strong> Present</p>
                 </div>
+            </div>
+
+            <h2 id="pre-publication">Pre-publication</h2>
+            <div class="pre-publication">
+                <h3>Spiking Graph Transformer: Bridging Energy Efficiency and Graph Data Processing with Spiking Neural Networks</h3>
+                <p><strong>Authors:</strong> Wenchuan Zhang, Juanxi Tian, <span class="highlight">Kaixin Zhu</span>, Wentao Fan</p>
+                <p>Submit to the IEEE Transactions on Neural Networks and Learning Systems.</p>
             </div>
         </div>
     </div>
