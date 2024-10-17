@@ -40,7 +40,7 @@
             font-size: 3em;
             color: #000000;
             margin-bottom: 10px;
-            text-align: left; 
+            text-align: left;
             transition: font-size 0.3s ease;
         }
         h1:hover {
@@ -51,7 +51,7 @@
             color: #000000;
             margin-top: 30px;
             margin-bottom: 10px;
-            text-align: left; 
+            text-align: left; /* 左对齐 */
             transition: font-size 0.3s ease;
         }
         h2:hover {
@@ -82,11 +82,11 @@
         }
         .links {
             margin-top: 20px;
-            text-align: left; /* 左对齐 */
+            text-align: left; 
         }
         .links a {
             display: block;
-            margin: 10px 0; /* 调整间距 */
+            margin: 10px 0;
             padding: 10px 15px;
             text-decoration: none;
             color: #333333;
@@ -162,20 +162,24 @@
             display: flex;
             background-color: rgba(200, 200, 200, 0.3); 
             border-radius: 10px; 
-            padding: 20px;
+            padding: 20px; 
             margin-bottom: 20px; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-            transition: box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease; 
         }
         .preprints .paper:hover {
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
         }
         .preprints .paper .image {
-            width: 150px;
-            height: 150px;
-            margin-right: 20px; 
-            border-radius: 10px; 
-            overflow: hidden; 
+            width: 200px; 
+            height: 200px; 
+            margin-right: 20px; /* 图片与文本之间的间距 */
+            border-radius: 10px; /* 图片圆角 */
+            overflow: hidden; /* 隐藏溢出部分 */
+            transition: transform 0.3s ease; /* 图片缩放过渡效果 */
+        }
+        .preprints .paper .image:hover {
+            transform: scale(1.6); 
         }
         .preprints .paper .image img {
             width: 100%;
@@ -192,16 +196,18 @@
             margin: 5px 0;
             font-size: 0.8em;
         }
-        .preprints .paper .details a {
+        .preprints .paper .details .button {
             display: inline-block;
-            margin-right: 10px;
-            color: #333333;
+            margin-top: 10px;
+            padding: 10px 15px;
             text-decoration: none;
-            transition: color 0.3s ease;
+            color: #ffffff;
+            background-color: #333333;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
-        .preprints .paper .details a:hover {
-            color: #000000;
-            text-decoration: underline;
+        .preprints .paper .details .button:hover {
+            background-color: #000000;
         }
         @media (max-width: 600px) {
             .container {
@@ -295,9 +301,10 @@
                     </div>
                     <div class="details">
                         <h3>Trans4D: Realistic Geometry-Aware Transition for Compositional Text-to-4D Synthesis</h3>
+                        <p>Bohan Zeng, Ling Yang, Siyu Li, Jiaming Liu, Zixiang Zhang, Juanxi Tian, <span class="highlight">Kaixin Zhu</span>, Fu-Yun Wang, Minkai Xu, Stefano Ermon, Wentao Zhang<p>
                         <p>Trans4D is currently accessible on the arXiv platform.</p>
-                        <a href="https://arxiv.org/abs/2410.07155">Arxiv</a>
-                        <a href="https://github.com/YangLing0818/Trans4D">Code</a>
+                        <a href="https://arxiv.org/abs/2410.07155" class="button">Arxiv</a>
+                        <a href="https://github.com/YangLing0818/Trans4D" class="button">Code</a>
                     </div>
                 </div>
             </div>
