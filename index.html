@@ -1,328 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaixin Zhu - Personal Homepage</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #ffffff;
-            color: #333333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            height: 100vh;
-            overflow-y: auto;
-        }
-        .container {
-            display: flex;
-            max-width: 1000px;
-            padding: 20px;
-        }
-        .sidebar {
-            width: 200px;
-            margin-right: 20px;
-            background-color: #f0f0f0;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 20px;
-        }
-        .content {
-            flex: 1;
-            text-align: left; 
-        }
-        h1 {
-            font-size: 3em;
-            color: #000000;
-            margin-bottom: 10px;
-            text-align: left;
-            transition: font-size 0.3s ease;
-        }
-        h1:hover {
-            font-size: 3.2em;
-        }
-        h2 {
-            font-size: 2em;
-            color: #000000;
-            margin-top: 30px;
-            margin-bottom: 10px;
-            text-align: left; /* 左对齐 */
-            transition: font-size 0.3s ease;
-        }
-        h2:hover {
-            font-size: 2.2em;
-        }
-        h3 {
-            font-size: 1.3em; 
-            color: #000000;
-            margin: 0 0 5px 0;
-            transition: font-size 0.3s ease;
-        }
-        h3:hover {
-            font-size: 1.4em;
-        }
-        p, ul {
-            font-size: 1.2em;
-            line-height: 1.6;
-            color: #666666;
-            text-align: left; 
-        }
-        ul {
-            list-style-type: disc; 
-            padding-left: 20px; 
-        }
-        .highlight {
-            color: #000000;
-            font-weight: bold;
-        }
-        .links {
-            margin-top: 20px;
-            text-align: left; 
-        }
-        .links a {
-            display: block;
-            margin: 10px 0;
-            padding: 10px 15px;
-            text-decoration: none;
-            color: #333333;
-            background-color: #f0f0f0;
-            border-radius: 5px;
-            position: relative;
-            overflow: hidden;
-            transition: background-color 0.3s ease;
-            text-align: center; 
-        }
-        .links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 2px solid transparent;
-            border-radius: 5px;
-            box-sizing: border-box;
-            clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
-            transition: clip-path 1s ease;
-        }
-        .links a:hover::before {
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            border-color: #000000;
-        }
-        .links .email {
-            display: block;
-            margin-bottom: 10px;
-            color: #666666;
-            background-color: transparent;
-            padding: 0;
-        }
-        .links .email:hover {
-            text-decoration: underline;
-        }
-        .intern-experience {
-            display: flex;
-            align-items: center;
-            margin-top: 20px;
-        }
-        .intern-experience img {
-            width: 90px; 
-            height: 90px; 
-            margin-right: 20px;
-        }
-        .intern-experience .details {
-            flex: 1;
-        }
-        .intern-experience .details p {
-            margin: 0;
-            font-size: 1.1em;
-            color: #666666;
-        }
-        .sidebar a {
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
-            text-decoration: none;
-            color: #333333;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        .sidebar a:hover {
-            background-color: #000000;
-            color: #ffffff;
-        }
-        .preprints {
-            margin-top: 30px;
-        }
-        .preprints .paper {
-            display: flex;
-            background-color: rgba(200, 200, 200, 0.3); 
-            border-radius: 10px; 
-            padding: 20px; 
-            margin-bottom: 20px; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease; 
-        }
-        .preprints .paper:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
-        }
-        .preprints .paper .image {
-            width: 360px; 
-            height: 400px; 
-            margin-right: 20px; /* 图片与文本之间的间距 */
-            border-radius: 10px; /* 图片圆角 */
-            overflow: hidden; /* 隐藏溢出部分 */
-            transition: transform 0.3s ease; /* 图片缩放过渡效果 */
-        }
-        .preprints .paper .image:hover {
-            transform: scale(1.3); 
-        }
-        .preprints .paper .image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
-        }
-        .preprints .paper .details {
-            flex: 1;
-        }
-        .preprints .paper .details h3 {
-            margin-top: 0;
-        }
-        .preprints .paper .details p {
-            margin: 5px 0;
-            font-size: 0.8em;
-        }
-        .preprints .paper .details .button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 15px;
-            text-decoration: none;
-            color: #ffffff;
-            background-color: #333333;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .preprints .paper .details .button:hover {
-            background-color: #000000;
-        }
-        @media (max-width: 600px) {
-            .container {
-                flex-direction: column;
-            }
-            .sidebar {
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 20px;
-                position: static;
-            }
-            h1 {
-                font-size: 2.3em;
-            }
-            h2 {
-                font-size: 1.8em;
-            }
-            h3 {
-                font-size: 1.1em; 
-            }
-            p, ul {
-                font-size: 1em;
-            }
-            .intern-experience {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .intern-experience img {
-                margin-bottom: 10px;
-            }
-            .preprints .paper {
-                flex-direction: column;
-            }
-            .preprints .paper .image {
-                width: 100%;
-                height: 200px;
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kaixin Zhu — research in world models and 3D/4D generation. MSAI student at NTU and research assistant at Peking University.">
+  <meta name="theme-color" content="#fafaf8">
+  <meta property="og:title" content="Kaixin Zhu | 朱凯鑫">
+  <meta property="og:description" content="World models and 3D/4D generation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://chriszkxxx.github.io/">
+  <link rel="canonical" href="https://chriszkxxx.github.io/">
+  <link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=4">
+  <script src="site.js" defer></script>
+  <title>Kaixin Zhu | 朱凯鑫</title>
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <a href="#about">About</a>
-            <a href="#news">News</a>
-            <a href="#intern-experience">Intern Experience</a>
-            <a href="#preprints">Preprints</a>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page">
+    <header class="topbar">
+      <a class="wordmark" href="#about" aria-label="Kaixin Zhu, home">Kaixin Zhu<span class="wordmark-dot" aria-hidden="true"></span></a>
+      <nav aria-label="Main navigation">
+        <a href="#news">News</a>
+        <a href="#research">Research</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="assets/CV_Kaixin_Zhu.pdf">CV <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section id="about" class="intro" aria-labelledby="name">
+        <div class="intro-title"><p class="eyebrow">World models &amp; generative AI</p>
+        <h1 id="name">Kaixin Zhu <span lang="zh">朱凯鑫</span></h1>
+        <p class="intro-lead">Learning to generate and understand<br class="desktop-break"> the world in <em>3D and 4D.</em></p>
+        </div><div class="intro-body"><div class="bio">
+          <p>I am an MSAI student at <a href="https://www.ntu.edu.sg/">Nanyang Technological University</a> and a research assistant at <a href="https://english.pku.edu.cn/">Peking University</a>, working with <a href="https://zwt233.github.io/">Prof. Wentao Zhang</a>. I received my B.S. in Artificial Intelligence with First Class Honours from Hong Kong Baptist University.</p>
+          <p>My research focuses on <strong>world models and 3D/4D generation</strong>.</p>
+          <p class="phd-note">I am looking for a <strong>PhD position</strong>. <a href="mailto:kaixinzhu56@gmail.com">Feel free to email me ↗</a></p>
         </div>
-        <div class="content">
-            <h1>Kaixin Zhu / 朱凯鑫</h1>
-            <div class="links">
-                <a href="mailto:kaixinzhu56@gmail.com">kaixinzhu56@gmail.com</a>
-                <a href="https://www.linkedin.com/in/kaixin-zhu/" target="_blank">LinkedIn</a>
-                <a href="https://github.com/Chriszkxxx" target="_blank">GitHub</a>
-            </div>
-            
-            <h2 id="about">About</h2>
-            <p>
-                I am pursuing an undergraduate degree in <span class="highlight">Artificial Intelligence</span> at Hong Kong Baptist University, focusing on <span class="highlight">deep learning, computer vision (4D generation), and foundation models (model design)</span>. My current research goals are to advance and extend the applications of spiking neural networks and to explore transfer learning to inspire their greater potential. Additionally, I am further exploring the field of Artificial Intelligence Science, working towards Artificial Intelligent Generated Content. To deepen my research, I joined Dr Wentao Zhang's lab at the International Machine Learning Research Centre at Peking University as an intern.
-                
-                <br />As an undergraduate student, I am endeavoring to study and explore to continuously improve my knowledge and skills in the field of artificial intelligence. I participate in courses and projects, actively engage in academic discussions, and try collaborating with my peers to expand my research horizons and collaborative skills.
-                
-                <br />I am passionate about the development of AI science and want to contribute to the development and application of AI technology through continuous learning and practice. I have ambitions to become an influential AI researcher and hope to contribute to solving complex problems in the real world. I believe that through diligence and hard work, I can continue to grow in this rapidly evolving field and contribute positively to future research and innovation.
-            </p>
-
-            <h2 id="news">News</h2>
-            <ul>
-                <li>September 1st, 2024    CCF student member</li>
-                <li>July 26th, 2024    IEEE student member</li>
-                <li>June 16th, 2024    Won the first prize of the undergraduate group in Cross-Strait and Hong Kong-Macao College Student Computer Innovation Competition</li>
-            </ul>
-
-            <h2 id="intern-experience">Intern Experience</h2>
-            <div class="intern-experience">
-                <img src="PKU.jpg" alt="University Logo">
-                <div class="details">
-                    <h3>Research Intern at International Machine Learning Research Center, Peking University</h3>
-                    <p><strong>Start Date:</strong> March 2024</p>
-                    <p><strong>End Date:</strong> Present</p>
-                </div>
-            </div>
-
-            <h2 id="preprints">Preprints</h2>
-            <div class="preprints">
-                <div class="paper">
-                    <div class="image">
-                        <img src="WideRange4D.jpg" alt="WideRange4D">
-                    </div>
-                    <div class="details">
-                        <h3>WideRange4D: Enabling High-Quality 4D Reconstruction with Wide-Range Movements and Scenes</h3>
-                        <p>Ling Yang*, <span class="highlight">Kaixin Zhu*</span>, Juanxi Tian*, Bohan Zeng*, Mingbao Lin, Hongjuan Pei, Wentao Zhang, Shuicheng Yan<p>
-                        <p>WideRange4D is currently accessible on the arXiv platform.</p>
-                        <a href="https://arxiv.org/abs/2503.13435" class="button">arXiv</a>
-                        <a href="https://huggingface.co/datasets/Gen-Verse/WideRange4D" class="button">Dataset</a>
-                        <a href="https://github.com/Gen-Verse/WideRange4D?tab=readme-ov-file" class="button">Code</a>
-                    </div>
-                </div>
-            </div>
-            <div class="preprints">
-                <div class="paper">
-                    <div class="image">
-                        <img src="Trans4D.jpg" alt="Trans4D">
-                    </div>
-                    <div class="details">
-                        <h3>Trans4D: Realistic Geometry-Aware Transition for Compositional Text-to-4D Synthesis</h3>
-                        <p>Bohan Zeng*, Ling Yang*, Siyu Li, Jiaming Liu, Zixiang Zhang, Juanxi Tian, <span class="highlight">Kaixin Zhu</span>, Yongzhen Guo, Fu-Yun Wang, Minkai Xu, Stefano Ermon, Wentao Zhang<p>
-                        <p>Trans4D is currently accessible on the arXiv platform.</p>
-                        <a href="https://arxiv.org/abs/2410.07155" class="button">arXiv</a>
-                        <a href="https://github.com/YangLing0818/Trans4D" class="button">Code</a>
-                    </div>
-                </div>
-            </div>
+        <div class="socials" aria-label="Contact and profiles">
+          <a href="mailto:kaixinzhu56@gmail.com">Email <span aria-hidden="true">↗</span></a>
+          <a href="https://scholar.google.com/citations?user=VAy45OcAAAAJ">Google Scholar <span aria-hidden="true">↗</span></a>
+          <a href="https://github.com/Chriszkxxx">GitHub <span aria-hidden="true">↗</span></a>
+          <a href="https://huggingface.co/czkk566">Hugging Face <span aria-hidden="true">↗</span></a>
+          <a href="assets/CV_Kaixin_Zhu.pdf">CV <span class="file-type">PDF</span></a>
         </div>
-    </div>
+        </div>
+      </section>
+
+      <section id="news" class="news section" aria-labelledby="news-heading">
+        <div class="news-heading"><p class="eyebrow">Latest updates</p><h2 id="news-heading">News<span class="heading-dot">.</span></h2><p>Updates from my work.</p><span class="scroll-hint">Scroll for earlier updates ↓</span></div>
+        <div class="news-scroll" role="region" aria-label="News timeline" tabindex="0">
+        <ol class="news-list">
+          <li><time datetime="2026-08">AUG <span>2026</span></time><div><span class="news-tag publication-tag">Open source</span><p>We open-sourced <a href="https://github.com/OpenDCAI/GameFactory-3A"><strong>GameFactory-3A</strong></a>, a toolkit for creating games with AI agents.</p></div></li>
+          <li><time datetime="2026-08">AUG <span>2026</span></time><div><span class="news-tag">Education</span><p>Started my MSAI studies at <strong>Nanyang Technological University</strong>.</p></div></li>
+          <li><time datetime="2026-07">JUL <span>2026</span></time><div><span class="news-tag">Experience</span><p>Joined <strong>Unity</strong> to work on avatar assets and motion retargeting.</p></div></li>
+          <li><time datetime="2026-02">FEB <span>2026</span></time><div><span class="news-tag publication-tag">Publication</span><p><a href="https://arxiv.org/abs/2512.10949">3DGen-R1</a> accepted to <strong>CVPR 2026</strong>.</p></div></li>
+          <li><time datetime="2025">2025</time><div><span class="news-tag talk-tag">Talk</span><p>Presented <strong>WideRange4D</strong> at <a href="https://www.techbeat.net/talk-info?id=964">TechBeat <span aria-hidden="true">↗</span></a>.</p></div></li>
+          <li><time datetime="2024-03">MAR <span>2024</span></time><div><span class="news-tag">Research</span><p>Joined <strong>Peking University</strong> as a Research Assistant, working with <a href="https://zwt233.github.io/">Prof. Wentao Zhang</a>.</p></div></li>
+        </ol>
+        </div>
+      </section>
+
+      <section id="research" class="section" aria-labelledby="research-heading">
+        <div class="section-heading"><div><p class="eyebrow">Publications &amp; projects</p><h2 id="research-heading">Research</h2></div><span class="section-note">* Equal contribution</span></div>
+        <article class="paper" id="world-models">
+          <a class="paper-image page-preview" href="https://arxiv.org/pdf/2604.04707"><img src="assets/openworldlib-page1.webp" alt="First page of the OpenWorldLib paper" width="918" height="1188" loading="lazy"></a>
+          <div class="paper-content">
+            <div class="paper-meta">Preprint · 2026</div>
+            <h3><a href="https://arxiv.org/abs/2604.04707">OpenWorldLib: A Unified Codebase and Definition of Advanced World Models</a></h3>
+            <p class="authors">DataFlow Team, Bohan Zeng, Daili Hua*, <strong>Kaixin Zhu*</strong>, Yifan Dai*, Bozhou Li*, Yuran Wang*, Chengzhuo Tong*, Yifan Yang*, Mingkun Chang*, Jianbin Zhao*, Zhou Liu, Hao Liang, Xiaochen Ma, Ruichuan An, Junbo Niu, Zimo Meng, Tianyi Bai, Meiyi Qiang, Huanyao Zhang, Zhiyou Xiao, Tianyu Guo, Qinhan Yu, Runhao Zhao, Zhengpin Li, Xinyi Huang, Yisheng Pan, Yiwen Tang, Yang Shi, Yue Ding, Xinlong Chen, Hongcheng Gao, Minglei Shi, Jialong Wu, Zekun Wang, Yuanxing Zhang, Xintao Wang, Pengfei Wan, Yiren Song, Mike Zheng Shou, Wentao Zhang</p>
+            <p class="paper-summary">A shared codebase for building and testing world models.</p>
+            <div class="paper-links"><a href="https://arxiv.org/abs/2604.04707">Paper ↗</a><a href="https://github.com/OpenDCAI/OpenWorldLib">Code ↗</a><a class="github-stars" href="https://github.com/OpenDCAI/OpenWorldLib" aria-label="OpenWorldLib GitHub stars"><img src="https://img.shields.io/github/stars/OpenDCAI/OpenWorldLib?style=flat&amp;label=Stars&amp;logo=github&amp;labelColor=263e38&amp;color=edf3ee" alt="OpenWorldLib GitHub star count" height="20" loading="lazy"><span class="star-fallback" hidden>☆ GitHub stars ↗</span></a></div>
+          </div>
+        </article>
+        <article class="paper" id="world-model-perspective">
+          <a class="paper-image page-preview" href="https://arxiv.org/pdf/2602.01630"><img src="assets/world-models-page1.webp" alt="First page of Research on World Models" width="918" height="1188" loading="lazy"></a>
+          <div class="paper-content">
+            <div class="paper-meta">Preprint · 2026</div>
+            <h3><a href="https://arxiv.org/abs/2602.01630">Research on World Models Is Not Merely Injecting World Knowledge into Specific Tasks</a></h3>
+            <p class="authors">Bohan Zeng*, <strong>Kaixin Zhu*</strong>, Daili Hua*, Bozhou Li*, Chengzhuo Tong*, Yuran Wang*, Xinyi Huang*, Yifan Dai*, Zixiang Zhang*, Yifan Yang*, Zhou Liu, Hao Liang, Xiaochen Ma, Ruichuan An, Tianyi Bai, Hongcheng Gao, Junbo Niu, Yang Shi, Xinlong Chen, Yue Ding, Minglei Shi, Kai Zeng, Yiwen Tang, Yuanxing Zhang, Pengfei Wan, Xintao Wang, Wentao Zhang</p>
+
+            <div class="paper-links"><a href="https://arxiv.org/abs/2602.01630">Paper ↗</a></div>
+          </div>
+        </article>
+        <article class="paper" id="gamefactory-3a">
+          <a class="paper-image project-preview" href="https://github.com/OpenDCAI/GameFactory-3A"><img src="assets/gamefactory-logo.png" alt="GameFactory-3A project logo" width="313" height="313" loading="lazy"></a>
+          <div class="paper-content">
+            <div class="paper-meta"><span class="venue">Open source</span><span>Aug 2026 · Game generation</span></div>
+            <h3><a href="https://github.com/OpenDCAI/GameFactory-3A">GameFactory-3A</a></h3>
+            <p class="project-credit">OpenDCAI</p>
+            <p class="paper-summary">An open-source toolkit that uses AI agents to create game assets and build playable games. It supports Unity, UE5, Godot, three.js, and Blender.</p>
+            <div class="paper-links"><a href="https://github.com/OpenDCAI/GameFactory-3A">Code ↗</a><a href="https://github.com/OpenDCAI/GameFactory-3A#game-demos">Demos ↗</a><a class="github-stars" href="https://github.com/OpenDCAI/GameFactory-3A" aria-label="GameFactory-3A GitHub stars"><img src="https://img.shields.io/github/stars/OpenDCAI/GameFactory-3A?style=flat&amp;label=Stars&amp;logo=github&amp;labelColor=263e38&amp;color=edf3ee" alt="GameFactory-3A GitHub star count" height="20" loading="lazy"><span class="star-fallback" hidden>☆ GitHub stars ↗</span></a></div>
+          </div>
+        </article>
+        <article class="paper" id="3dgen-r1">
+          <a class="paper-image" href="https://arxiv.org/abs/2512.10949"><img src="assets/3dgen-r1.webp" alt="3dgen-r1 research overview" width="817" height="445" loading="lazy"></a>
+          <div class="paper-content">
+            <div class="paper-meta"><span class="venue">CVPR 2026</span><span>3D generation · Reinforcement learning</span></div>
+            <h3><a href="https://arxiv.org/abs/2512.10949">Are We Ready for RL in Text-to-3D Generation? A Progressive Investigation</a></h3>
+            <p class="authors">Yiwen Tang*, Zoey Guo*, <strong>Kaixin Zhu*</strong>, Ray Zhang*, Qizhi Chen, Dongzhi Jiang, Junli Liu, Bohan Zeng, Haoming Song, Delin Qu, Tianyi Bai, Dan Xu, Wentao Zhang, Bin Zhao</p>
+            <p class="paper-summary">Studying how rewards and reinforcement learning improve text-to-3D generation.</p>
+            <div class="paper-links"><a href="https://arxiv.org/abs/2512.10949">Paper ↗</a><a href="https://github.com/Ivan-Tang-3D/3DGen-R1">Code ↗</a><a class="github-stars" href="https://github.com/Ivan-Tang-3D/3DGen-R1" aria-label="3DGen-R1 GitHub stars"><img src="https://img.shields.io/github/stars/Ivan-Tang-3D/3DGen-R1?style=flat&amp;label=Stars&amp;logo=github&amp;labelColor=263e38&amp;color=edf3ee" alt="3DGen-R1 GitHub star count" height="20" loading="lazy"><span class="star-fallback" hidden>☆ GitHub stars ↗</span></a></div>
+          </div>
+        </article>
+        <article class="paper" id="vggt-edit">
+          <a class="paper-image" href="https://chriszkxxx.github.io/VGGT-Edit/"><img src="assets/vggt-edit.webp" alt="vggt-edit research overview" width="1000" height="476" loading="lazy"></a>
+          <div class="paper-content">
+            <div class="paper-meta"><span>Preprint · 2026</span><span>3D scene editing</span></div>
+            <h3><a href="https://arxiv.org/abs/2605.15186">VGGT-Edit: Feed-forward Native 3D Scene Editing with Residual Field Prediction</a></h3>
+            <p class="authors"><strong>Kaixin Zhu*</strong>, Yiwen Tang*, Yifan Yang*, Renrui Zhang*, Bohan Zeng, Ziyu Guo, Ruichuan An, Zhou Liu, Qizhi Chen, Delin Qu, Jaehong Yoon, Wentao Zhang</p>
+            <p class="paper-summary">Editing 3D scenes from text while keeping shapes consistent across views.</p>
+            <div class="paper-links"><a href="https://arxiv.org/abs/2605.15186">Paper ↗</a><a href="https://chriszkxxx.github.io/VGGT-Edit/">Project ↗</a></div>
+          </div>
+        </article>
+        <article class="paper" id="widerange4d">
+          <a class="paper-image" href="https://arxiv.org/abs/2503.13435"><img src="assets/widerange4d.webp" alt="widerange4d research overview" width="605" height="700" loading="lazy"></a>
+          <div class="paper-content">
+            <div class="paper-meta"><span>Preprint · 2025</span><span>4D reconstruction</span></div>
+            <h3><a href="https://arxiv.org/abs/2503.13435">WideRange4D: Enabling High-Quality 4D Reconstruction with Wide-Range Movements and Scenes</a></h3>
+            <p class="authors">Ling Yang*, <strong>Kaixin Zhu*</strong>, Juanxi Tian*, Bohan Zeng*, Mingbao Lin, Hongjuan Pei, Wentao Zhang, Shuicheng Yan</p>
+            <p class="paper-summary">A benchmark and method for reconstructing 4D scenes with large movements.</p>
+            <div class="paper-links"><a href="https://arxiv.org/abs/2503.13435">Paper ↗</a><a href="https://github.com/Gen-Verse/WideRange4D">Code ↗</a><a class="github-stars" href="https://github.com/Gen-Verse/WideRange4D" aria-label="WideRange4D GitHub stars"><img src="https://img.shields.io/github/stars/Gen-Verse/WideRange4D?style=flat&amp;label=Stars&amp;logo=github&amp;labelColor=263e38&amp;color=edf3ee" alt="WideRange4D GitHub star count" height="20" loading="lazy"><span class="star-fallback" hidden>☆ GitHub stars ↗</span></a><a href="https://huggingface.co/datasets/Gen-Verse/WideRange4D">Dataset ↗</a></div>
+          </div>
+        </article>
+        <article class="paper" id="trans4d">
+          <a class="paper-image" href="https://arxiv.org/abs/2410.07155"><img src="assets/trans4d.webp" alt="trans4d research overview" width="636" height="700" loading="lazy"></a>
+          <div class="paper-content">
+            <div class="paper-meta"><span>Preprint · 2024</span><span>Text-to-4D generation</span></div>
+            <h3><a href="https://arxiv.org/abs/2410.07155">Trans4D: Realistic Geometry-Aware Transition for Compositional Text-to-4D Synthesis</a></h3>
+            <p class="authors">Bohan Zeng*, Ling Yang*, Siyu Li, Jiaming Liu, Zixiang Zhang, Juanxi Tian, <strong>Kaixin Zhu</strong>, Yongzhen Guo, Fu-Yun Wang, Minkai Xu, Stefano Ermon, Wentao Zhang</p>
+            <p class="paper-summary">Creating 4D scenes with realistic transitions between objects and actions.</p>
+            <div class="paper-links"><a href="https://arxiv.org/abs/2410.07155">Paper ↗</a><a href="https://github.com/YangLing0818/Trans4D">Code ↗</a></div>
+          </div>
+        </article>
+
+      </section>
+
+      <section id="experience" class="section" aria-labelledby="experience-heading">
+        <h2 id="experience-heading">Experience</h2>
+        <div class="timeline-row">
+          <p class="date">Jul 2026 — Present</p>
+          <div class="institution-logo unity-logo"><img src="assets/unity.svg" alt="" width="112" height="68" loading="lazy"></div>
+          <div class="institution-content"><h3>Unity <span class="location">Beijing</span></h3><p class="role">3D / 4D · Internship</p><p>Working on 3D/4D content and animation.</p></div>
+        </div>
+        <div class="timeline-row">
+          <p class="date">Mar 2024 — Present</p>
+          <div class="institution-logo pku-logo"><img src="assets/pku.webp" alt="" width="112" height="68" loading="lazy"></div>
+          <div class="institution-content"><h3>Peking University <span class="location">Beijing</span></h3><p class="role">Research Assistant · Advisor: <a href="https://zwt233.github.io/">Prof. Wentao Zhang</a></p><p>Research on world models and 3D/4D generation.</p></div>
+        </div>
+      </section>
+      <section id="education" class="section" aria-labelledby="education-heading">
+        <h2 id="education-heading">Education</h2>
+        <div class="timeline-row">
+          <p class="date">Aug 2026 — Aug 2027<br><span class="expected">Expected completion</span></p>
+          <div class="institution-logo ntu-logo"><img src="assets/ntu.png" alt="" width="112" height="68" loading="lazy"></div>
+          <div class="institution-content"><h3>Nanyang Technological University</h3><p>Master of Science in Artificial Intelligence (MSAI)</p></div>
+        </div>
+        <div class="timeline-row">
+          <p class="date">Sep 2021 — Jun 2025</p>
+          <div class="institution-logo hkbu-logo"><img src="assets/hkbu-stacked.svg" alt="" width="112" height="68" loading="lazy"></div>
+          <div class="institution-content"><h3>Hong Kong Baptist University</h3><p>B.S. in Artificial Intelligence · <strong>First Class Honours</strong></p></div>
+        </div>
+      </section>
+    </main>
+    <footer><p>Kaixin Zhu <span aria-hidden="true">·</span> <a href="mailto:kaixinzhu56@gmail.com">kaixinzhu56@gmail.com</a></p><p>Last updated September 2026 <a href="#about" aria-label="Back to top">↑</a></p></footer>
+  </div>
 </body>
 </html>
